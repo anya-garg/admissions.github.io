@@ -1,433 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admissions Decision</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anya Garg — Mathematics &amp; Economics, UCSD</title>
+<meta name="description" content="Anya Garg — quantitative research, financial analysis, and data science. UCSD Mathematics &amp; Economics, Data Science minor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Caveat:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FAF8F2;
+    --paper-raised: #FFFFFF;
+    --ink: #26241F;
+    --ink-soft: #5B594E;
+    --indigo: #2E3A59;
+    --indigo-soft: #56618A;
+    --berry: #9C3D54;
+    --berry-soft: #C97A8C;
+    --sage: #4F7A68;
+    --grid-line: rgba(38,36,31,0.07);
+    --hair: rgba(38,36,31,0.13);
+    --display: 'Spectral', serif;
+    --hand: 'Caveat', cursive;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
 
-    body {
-      margin: 0;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #f6f6f4;
-      color: #2d2d2d;
-    }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
 
-    .hidden {
-      display: none !important;
-    }
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/ 100% 34px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/ 34px 100%,
+      var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-    .topbar {
-      background: #ffffff;
-      padding: 20px 40px 10px;
-      border-bottom: 1px solid #ddd;
-    }
+  a{color:inherit;}
+  ::selection{background:var(--berry-soft); color:#fff;}
 
-    .top-links {
-      display: flex;
-      justify-content: flex-end;
-      gap: 20px;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
 
-    .top-links a {
-      color: #666;
-      text-decoration: underline;
-    }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--berry); outline-offset:3px;}
 
-    .status-btn {
-      background: #b31b1b;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      font-size: 14px;
-      letter-spacing: 0.3px;
-      cursor: default;
-    }
+  /* NAV */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,248,242,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1040px; margin:0 auto;}
+  .nav-mark{font-family:var(--display); font-weight:600; font-size:17px; color:var(--indigo);}
+  nav.links{display:flex; gap:28px; font-family:var(--mono); font-size:12.5px; letter-spacing:0.03em;}
+  nav.links a{text-decoration:none; color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; transition:color .2s, border-color .2s;}
+  nav.links a:hover{color:var(--berry); border-color:var(--berry);}
+  @media (max-width:640px){ nav.links{display:none;} }
 
-    .hero {
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 50px;
-      align-items: start;
-    }
+  /* HERO */
+  .hero{padding:88px 0 60px; border-bottom:1px solid var(--hair); position:relative;}
+  .eyebrow{font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--sage); margin:0 0 18px;}
 
-    .site-title {
-      font-size: 28px;
-      font-weight: 300;
-      margin-bottom: 28px;
-    }
+  .name-row{position:relative; display:inline-block; margin-bottom:6px;}
+  h1.name{
+    font-family:var(--display);
+    font-weight:600;
+    font-style:normal;
+    font-size:clamp(46px, 7.5vw, 80px);
+    line-height:1.0;
+    margin:0;
+    color:var(--indigo);
+    letter-spacing:-0.01em;
+  }
+  .margin-note{
+    font-family:var(--hand);
+    font-size:22px;
+    color:var(--berry);
+    position:absolute;
+    top:-30px;
+    right:-18px;
+    transform:rotate(-6deg);
+    white-space:nowrap;
+  }
+  .margin-note svg{width:34px; vertical-align:middle; margin-left:2px;}
+  @media (max-width:640px){ .margin-note{position:static; display:block; margin:8px 0 0; transform:rotate(-2deg);} }
 
-    .line {
-      height: 2px;
-      background: #b31b1b;
-      opacity: 0.75;
-      margin: 16px 0 34px;
-    }
+  .role-line{
+    font-family:var(--mono);
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:18px 0 28px;
+  }
+  .role-line .sep{color:var(--berry-soft); margin:0 10px;}
+  .lede{font-size:18px; max-width:600px; color:var(--ink); margin:0 0 36px;}
+  .lede em{font-style:italic; color:var(--berry); font-family:var(--display);}
 
-    .status-card {
-      background: #ececb8;
-      padding: 28px;
-      max-width: 760px;
-      min-height: 180px;
-    }
+  .hero-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:44px; align-items:end;}
+  @media (max-width:820px){ .hero-grid{grid-template-columns:1fr;} }
 
-    .status-card h2 {
-      margin: 0 0 18px;
-      color: #b31b1b;
-      font-size: 24px;
-    }
+  .graph-card{border:1px solid var(--hair); background:var(--paper-raised); padding:22px 24px 14px; box-shadow:0 1px 0 rgba(38,36,31,0.04);}
+  .graph-label{font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); display:flex; justify-content:space-between; margin-bottom:8px;}
+  .graph-label span:last-child{color:var(--sage); font-family:var(--mono);}
+  #curve path.line{
+    fill:none; stroke:var(--berry); stroke-width:2.25;
+    stroke-linecap:round;
+    stroke-dasharray:520; stroke-dashoffset:520;
+    animation:draw 1.8s cubic-bezier(.4,0,.2,1) forwards .25s;
+  }
+  #curve .axis{stroke:var(--hair); stroke-width:1;}
+  #curve .tick{fill:var(--ink-soft); font-family:var(--mono); font-size:9px;}
+  #curve circle.pt{ opacity:0; animation:fadein .4s ease forwards; }
+  #curve text.pt-label{opacity:0; animation:fadein .4s ease forwards 1.9s; font-family:var(--hand); font-size:16px; fill:var(--berry);}
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes fadein{ to{ opacity:1; } }
 
-    .status-card p {
-      margin: 0 0 22px;
-      font-size: 18px;
-      line-height: 1.6;
-      color: #555;
-    }
+  .contact-row{display:flex; gap:20px; margin-top:22px; font-family:var(--mono); font-size:13px; flex-wrap:wrap;}
+  .contact-row a{text-decoration:none; color:var(--indigo); border-bottom:1px solid var(--berry-soft); padding-bottom:2px; transition:border-color .2s, color .2s;}
+  .contact-row a:hover{color:var(--berry); border-color:var(--berry);}
 
-    .view-update-btn {
-      background: none;
-      border: none;
-      color: #b31b1b;
-      font-size: 22px;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 0;
-    }
+  /* SECTION SCAFFOLD */
+  section{padding:60px 0; border-bottom:1px solid var(--hair);}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:34px; position:relative;}
+  .check{color:var(--sage); font-family:var(--hand); font-size:30px; line-height:1; transform:rotate(-4deg); display:inline-block;}
+  h2.sec-title{font-family:var(--display); font-weight:600; font-size:30px; margin:0; color:var(--indigo);}
+  .sec-note{font-family:var(--mono); font-size:12px; color:var(--ink-soft); margin-left:auto; text-align:right;}
 
-    .small-links {
-      margin-top: 26px;
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
+  /* LEDGER ROWS */
+  .ledger{border-top:1px solid var(--hair);}
+  .row{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    padding:26px 0;
+    border-bottom:1px solid var(--hair);
+  }
+  @media (max-width:640px){ .row{grid-template-columns:1fr; gap:6px;} }
+  .row .when{font-family:var(--mono); font-size:12.5px; color:var(--sage); white-space:nowrap; padding-top:4px;}
+  .row .what h3{font-family:var(--display); font-weight:600; font-size:20px; margin:0 0 4px; color:var(--indigo);}
+  .row .what .org{font-family:var(--mono); font-size:12px; color:var(--berry); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:10px; display:block;}
+  .row ul{margin:0; padding-left:18px; color:var(--ink); font-size:15px;}
+  .row li{margin-bottom:6px;}
+  .row li::marker{color:var(--berry-soft);}
 
-    .small-links a {
-      color: #2244cc;
-    }
+  /* PROJECTS */
+  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
+  @media (max-width:720px){ .proj-grid{grid-template-columns:1fr;} }
+  .card{
+    border:1px solid var(--hair);
+    background:var(--paper-raised);
+    padding:26px;
+    transition:border-color .2s, transform .2s, box-shadow .2s;
+    display:flex; flex-direction:column;
+  }
+  .card:hover{border-color:var(--berry-soft); transform:translateY(-2px); box-shadow:0 8px 20px rgba(38,36,31,0.06);}
+  .card .tag{font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage); margin-bottom:12px;}
+  .card h3{font-family:var(--display); font-weight:600; font-size:21px; margin:0 0 10px; color:var(--indigo);}
+  .card p{font-size:14.5px; color:var(--ink-soft); margin:0 0 18px; flex-grow:1;}
+  .card a.repo-link{
+    font-family:var(--mono); font-size:12.5px; text-decoration:none; color:var(--berry);
+    border-top:1px solid var(--hair); padding-top:14px; display:flex; align-items:center; gap:6px;
+  }
+  .card a.repo-link:hover{color:var(--indigo);}
+  .card a.repo-link svg{width:13px; height:13px;}
 
-    .sidebar {
-      padding-top: 70px;
-      font-size: 17px;
-      line-height: 1.9;
-      color: #666;
-    }
+  .more-repos{margin-top:26px; font-family:var(--mono); font-size:13px; color:var(--ink-soft);}
+  .more-repos a{color:var(--indigo); text-decoration:none; border-bottom:1px solid var(--berry-soft);}
+  .more-repos a:hover{color:var(--berry); border-color:var(--berry);}
 
-    .sidebar h3 {
-      color: #b31b1b;
-      margin-top: 26px;
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
+  /* SKILLS */
+  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  @media (max-width:720px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-group h4{font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--berry); margin:0 0 14px;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:var(--mono); font-size:12.5px; padding:6px 11px;
+    border:1px solid var(--hair); color:var(--ink-soft); background:var(--paper-raised);
+  }
 
-    .address-block {
-      margin-top: 18px;
-      line-height: 1.8;
-    }
+  /* LEADERSHIP */
+  .lead-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  @media (max-width:720px){ .lead-grid{grid-template-columns:1fr;} }
 
-    .verify-link {
-      display: inline-block;
-      margin-top: 12px;
-      color: #2244cc;
-    }
-
-    /* Letter view */
-    .letter-page {
-      position: relative;
-      min-height: 100vh;
-      padding: 40px 50px 80px;
-      background: #f6f6f4;
-      overflow: hidden;
-    }
-
-    .letter-header {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      column-gap: 30px;
-      margin-bottom: 50px;
-    }
-
-    .letter-header .title {
-      font-size: 28px;
-      font-weight: 300;
-    }
-
-    .seal {
-      width: 120px;
-      height: 120px;
-      border: 4px solid #b31b1b;
-      border-radius: 50%;
-      color: #b31b1b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      text-align: center;
-      font-size: 14px;
-      padding: 12px;
-      background: transparent;
-    }
-
-    .header-line {
-      height: 2px;
-      background: #b31b1b;
-      opacity: 0.75;
-    }
-
-    .letter-content {
-      max-width: 1050px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .letter-top {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 60px;
-      margin-bottom: 50px;
-    }
-
-    .date {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 36px;
-      font-family: Georgia, "Times New Roman", serif;
-    }
-
-    .office-name {
-      color: #b31b1b;
-      font-size: 34px;
-      font-family: Georgia, "Times New Roman", serif;
-      margin-bottom: 6px;
-    }
-
-    .office-subtitle {
-      font-size: 22px;
-      font-weight: 700;
-      font-family: Georgia, "Times New Roman", serif;
-    }
-
-    .sender-box {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 18px;
-      line-height: 1.6;
-      padding-top: 52px;
-    }
-
-    .letter-body {
-      max-width: 980px;
-      font-size: 19px;
-      line-height: 1.9;
-      color: #444;
-    }
-
-    .letter-body p {
-      margin-bottom: 24px;
-    }
-
-    .back-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background: white;
-      border: 1px solid #ccc;
-      padding: 10px 16px;
-      cursor: pointer;
-      z-index: 5;
-      font-size: 14px;
-    }
-
-    /* confetti */
-    .confetti {
-      position: fixed;
-      top: -20px;
-      width: 10px;
-      height: 18px;
-      background: #b31b1b;
-      opacity: 0.9;
-      animation: fall linear forwards;
-      z-index: 1;
-      border-radius: 2px;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(720deg);
-      }
-    }
-
-    @media (max-width: 950px) {
-      .hero,
-      .letter-top,
-      .letter-header {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        padding-top: 10px;
-      }
-
-      .seal {
-        margin: 0 auto;
-      }
-
-      .letter-header .title {
-        text-align: center;
-      }
-
-      .header-line {
-        display: none;
-      }
-    }
-  </style>
+  /* FOOTER */
+  footer{padding:56px 0 70px;}
+  .foot-row{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  .foot-title{font-family:var(--display); font-weight:600; font-size:30px; margin:0 0 8px; color:var(--indigo);}
+  .foot-sub{font-family:var(--body); font-size:15px; color:var(--ink-soft); margin:0 0 4px; max-width:440px;}
+  .foot-sign{font-family:var(--hand); font-size:20px; color:var(--berry); margin-top:14px;}
+  .foot-links{display:flex; gap:20px; font-family:var(--mono); font-size:13px;}
+  .foot-links a{text-decoration:none; color:var(--indigo); border-bottom:1px solid var(--berry-soft);}
+  .foot-links a:hover{color:var(--berry); border-color:var(--berry);}
+  .copyright{font-family:var(--mono); font-size:11px; color:var(--ink-soft); margin-top:44px; opacity:0.65;}
+</style>
 </head>
 <body>
-  <!-- Portal Page -->
-  <section id="portalPage">
-    <div class="topbar">
-      <div class="top-links">
-        <button class="status-btn">CHECK APPLICATION STATUS</button>
-        <a href="#">Policies</a>
-        <a href="#">Request Information</a>
-        <a href="#">Contact Us</a>
-      </div>
-    </div>
 
-    <div class="hero">
+<header class="site">
+  <div class="nav-row">
+    <div class="nav-mark">Anya Garg</div>
+    <nav class="links">
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <p class="eyebrow">Quantitative research &amp; financial analysis</p>
+    <div class="name-row">
+      <h1 class="name">Anya Garg</h1>
+    </div>
+    <p class="role-line">B.S. Mathematics &amp; Economics<span class="sep">·</span>Data Science Minor<span class="sep">·</span>UC San Diego, Class of 2027</p>
+
+    <div class="hero-grid">
       <div>
-        <div class="site-title">College Undergraduate Admissions</div>
-        <div class="line"></div>
-
-        <div class="status-card">
-          <h2>Status Update</h2>
-          <p>New updates to your application were posted March 21, 2026.</p>
-          <button class="view-update-btn" onclick="showLetter()">View Update >></button>
+        <p class="lede">Hi! I'm Anya, a Junior in College with a passion for analysis, mathematics, economics, and data science! I've had experience with roles in data analytics, research, financial analysis, modelling, and more, and would love to join a space where I can use my skills to contribute to a real product.</p>
+        <div class="contact-row">
+          <a href="mailto:a7garg@ucsd.edu">a7garg@ucsd.edu</a>
+          <a href="https://github.com/anya-garg" target="_blank" rel="noopener">github.com/anya-garg</a>
+          <span style="color:var(--ink-soft);">La Jolla, CA</span>
         </div>
-
-        <div class="small-links">
-          <a href="#">Change Email Address</a>
-          <a href="#">Change Password</a>
-          <a href="#">Logout</a>
-        </div>
-      </div>
-
-      <div class="sidebar">
-        <p>If you need to contact us regarding your application, provide your name and this reference number: 175614932.</p>
-
-        </p>
-
-        <h3>Verify Address</h3>
-        <p>Please confirm your current address to ensure proper communication regarding your application.</p>
-
-        <div class="address-block">
-          <strong>Current Address on File:</strong><br />
-          Sia Bora<br />
-          Up ur butt<br />
-          Bangalore, India
-        </div>
-
-        <a class="verify-link" href="#">Verify Now</a>
       </div>
     </div>
   </section>
 
-  <!-- Letter Page -->
-  <section id="letterPage" class="letter-page hidden">
-    <button class="back-btn" onclick="goBack()">← Back</button>
-
-    <div class="letter-content">
-      <div class="letter-header">
-        <div>
-          <div class="title">College Undergraduate Admissions</div>
-          <div class="header-line"></div>
-        </div>
-
-        <div class="seal">HAPPY<br>BIRTHDAY</div>
-
-        <div>
-          <div class="header-line"></div>
-        </div>
-      </div>
-
-      <div class="letter-top">
-        <div>
-          <div class="date"> March 21, 2026</div>
-        </div>
-
-        <div class="sender-box">
-          <strong>Anya and Sana Garg</strong><br />
-          <em>Directors of Admissions</em><br />
-          17 Years Committee<br /><br />
+  <section id="experience">
+    <div class="sec-head">
+      <span class="check">✓</span>
+      <h2 class="sec-title">Professional Experience</h2>
+      <span class="sec-note">reverse&nbsp;chronological</span>
+    </div>
+    <div class="ledger">
+      <div class="row">
+        <div class="when">06.26 — 08.26</div>
+        <div class="what">
+          <h3>Summer Analyst</h3>
+          <span class="org">HSBC · Corporate &amp; Institutional Banking</span>
+          <ul>
+            <li>Conduct quantitative credit analysis using public financial statements, 10-K filings, and market research</li>
+            <li>Evaluate client risk profiles and assist relationship managers in developing product recommendations</li>
+            <li>Analyze pitchbooks and industry research supporting International Middle Market client coverage</li>
+          </ul>
         </div>
       </div>
-
-      <div class="letter-body">
-        <p>Dear Sia Bora,</p>
-
-        <p>
-          Congratulations! We are delighted to share that the admissions selection committee has approved your application for admission to your 17th year 2026.
-        </p>
-
-        <p>
-          Your application stood out for its thoughtfulness, achievement, and clear sense of purpose. We are excited by the perspectives, energy, and ambition you would bring to our campus community.
-        </p>
-
-        <p>
-          We hope you will take time to celebrate this accomplishment. We present you with some personal messages from the deans:
-        </p>
-
-        <p>
-          From our distinguished dean Sana Garg: "happy birthday siaaaaa! ur so old i cant believe ur almost in uniiii i hope 17 is gonna be ur best and i cant wait to see u. i miss u so much and i swear we’re coming to visit soon bc it’s been too long and we gotta update :)) i know all ur secrets 😊 so don’t lie don’t lie. love uuuu see u soon"
-        </p>
-
-        <p>
-          From our respected dean Anya Garg: "CONGRATS SIAAAAA I LOVE YOUUU! I'm so proud of u, and im so glad ur turning 17 :) I know you r going to do amazing things this year, and I'm so grateful i'll be able to seee it. I miss u tons, i havent seen you in ages and i really really want to. promise we'll hang out this year? happy bday :))"
-        </p>
-
-        <p>
-          Congratulations once again on this wonderful achievement. We hope to welcome you to campus soon.
-        </p>
-
-        <p>Sincerely,<br /><br />Anya and Sana Garg<br /> Directors of Undergraduate Admissions</p>
+      <div class="row">
+        <div class="when">06.25 — 08.25</div>
+        <div class="what">
+          <h3>Data Analytics &amp; Risk Intern</h3>
+          <span class="org">Secretariat Advisors, LLC</span>
+          <ul>
+            <li>Developed Python and SQL workflows to automate extraction and validation of transaction data from PDFs</li>
+            <li>Built and delivered an MVP web application automating Gantt chart generation for PowerPoint</li>
+            <li>Performed QA and exploratory analysis on financial datasets supporting expert testimony</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">06.24 — 11.24</div>
+        <div class="what">
+          <h3>Sustainable Finance Intern</h3>
+          <span class="org">World Wildlife Fund</span>
+          <ul>
+            <li>Conducted ESG assessments of financial institutions using quantitative sustainability metrics</li>
+            <li>Contributed analysis and written recommendations to the WWF Sustainable Banking Report</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <script>
-    function showLetter() {
-      document.getElementById("portalPage").classList.add("hidden");
-      document.getElementById("letterPage").classList.remove("hidden");
-      launchConfetti();
-    }
+  <section id="research">
+    <div class="sec-head">
+      <span class="check">✓</span>
+      <h2 class="sec-title">Research</h2>
+    </div>
+    <div class="ledger">
+      <div class="row">
+        <div class="when">06.26 — Present</div>
+        <div class="what">
+          <h3>Independent Economics Researcher</h3>
+          <span class="org">UC San Diego</span>
+          <ul>
+            <li>Conduct independent research using restricted federal education datasets covering 16,000+ students</li>
+            <li>Investigate whether grade inflation weakens GPA as a labor-market signal, using regression in Python</li>
+            <li>Construct school-level grade inflation measures by integrating student- and school-level survey data</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">01.24 — Present</div>
+        <div class="what">
+          <h3>Research Assistant</h3>
+          <span class="org">UC San Diego</span>
+          <ul>
+            <li>Developed automated R workflows tracking openings, closures, and ownership of EV charging stations</li>
+            <li>Conducted data cleaning and statistical analysis for research on competition in EV charging markets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    function goBack() {
-      document.getElementById("letterPage").classList.add("hidden");
-      document.getElementById("portalPage").classList.remove("hidden");
-      document.querySelectorAll(".confetti").forEach(c => c.remove());
-    }
+  <section id="projects">
+    <div class="sec-head">
+      <span class="check">✓</span>
+      <h2 class="sec-title">Selected Projects</h2>
+      <span class="sec-note">full list on GitHub</span>
+    </div>
+    <div class="proj-grid">
+      <div class="card">
+        <span class="tag">Quantitative Finance</span>
+        <h3>Quantitative Investment Platform</h3>
+        <p>Systematic strategies combining traditional momentum and 52-week-high momentum, with an automated portfolio recommendation and backtesting framework in Python — benchmarked against mean-variance optimization and neural-network portfolio models.</p>
+        <a class="repo-link" href="https://github.com/anya-garg/SFIC_model" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          view on github
+        </a>
+      </div>
+      <div class="card">
+        <span class="tag">Data Visualization</span>
+        <h3>Hawaii Business Review Analytics</h3>
+        <p>A report analyzing the relationship between business reviews and neighborhood wealth, applying regression and random forest models to evaluate predictive relationships and visualize trends across neighborhoods.</p>
+        <a class="repo-link" href="https://github.com/anya-garg/hawaii-business-review-analytics" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          view on github
+        </a>
+      </div>
+    </div>
+    <p class="more-repos">More on GitHub — <a href="https://github.com/anya-garg/project-manager" target="_blank" rel="noopener">project-manager</a>, <a href="https://github.com/anya-garg/KrystalQuiz" target="_blank" rel="noopener">KrystalQuiz</a></p>
+  </section>
 
-    function launchConfetti() {
-      for (let i = 0; i < 70; i++) {
-        const piece = document.createElement("div");
-        piece.classList.add("confetti");
-        piece.style.left = Math.random() * 100 + "vw";
-        piece.style.animationDuration = (4 + Math.random() * 4) + "s";
-        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
-        document.body.appendChild(piece);
+  <section id="skills">
+    <div class="sec-head">
+      <span class="check">✓</span>
+      <h2 class="sec-title">Technical Skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Programming</h4>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">scikit-learn</span><span class="chip">SQL</span><span class="chip">R / Tidyverse</span><span class="chip">Java</span><span class="chip">MATLAB</span><span class="chip">Stata</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Analytics</h4>
+        <div class="chip-row">
+          <span class="chip">Regression</span><span class="chip">Machine Learning</span><span class="chip">Random Forests</span><span class="chip">Data Vis.</span><span class="chip">Modeling</span><span class="chip">Time Series</span><span class="chip">Optimization</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Software</h4>
+        <div class="chip-row">
+          <span class="chip">Excel</span><span class="chip">Git</span><span class="chip">Jupyter</span><span class="chip">Figma</span><span class="chip">PowerPoint</span><span class="chip">FactSet</span><span class="chip">Bloomberg</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        setTimeout(() => {
-          piece.remove();
-        }, 8500);
-      }
-    }
-  </script>
+  <section id="leadership">
+    <div class="sec-head">
+      <span class="check">✓</span>
+      <h2 class="sec-title">Leadership &amp; Teaching</h2>
+    </div>
+    <div class="lead-grid">
+      <div class="row" style="border-bottom:none; padding-top:0;">
+        <div class="when">04.24 — Present</div>
+        <div class="what">
+          <h3>Head of Quantitative Technology</h3>
+          <span class="org">Student Foundation Investment Committee</span>
+          <ul>
+            <li>Presented proposal securing approval for an $80,000 quantitative investment allocation</li>
+            <li>Led portfolio optimization research using momentum, mean-variance optimization, and ML</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row" style="border-bottom:none; padding-top:0;">
+        <div class="when">09.24 — Present</div>
+        <div class="what">
+          <h3>Instructional Assistant &amp; Math Tutor</h3>
+          <span class="org">UC San Diego</span>
+          <ul>
+            <li>Supported 600+ students through tutoring, office hours, and review sessions for math/econ courses</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" style="border-bottom:none;">
+    <div class="foot-row">
+      <div>
+        <h3 class="foot-title">Contact me!</h3>
+        <p class="foot-sub">a7garg@ucsd.edu</p>
+        <p class="foot-sign">— Anya</p>
+      </div>
+      <div class="foot-links">
+        <a href="mailto:a7garg@ucsd.edu">Email</a>
+        <a href="https://github.com/anya-garg" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <p class="copyright">Anya Garg — La Jolla, CA</p>
+  </footer>
+
+</div>
+
 </body>
 </html>
